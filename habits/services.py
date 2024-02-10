@@ -78,7 +78,7 @@ def create_reminder(habit):
         # minute=habit.time.minute,
         # hour=habit.time.hour,
         day_of_week='*' if habit.period == 'ежедневно' else '*/7',
-        month_of_year='*',
+        month_of_year="*",
         timezone=settings.TIME_ZONE
     )
 
