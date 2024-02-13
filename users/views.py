@@ -40,7 +40,7 @@ class UserDestroyAPIView(generics.DestroyAPIView):
 
 class UsersRegistrationView(generics.CreateAPIView):
     """
-    Сериализатор для регистрации нового пользователя.
+    Класс для регистрации нового пользователя.
     """
     queryset = User.objects.all()
     serializer_class = UserRegisterSerializer
