@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-from datetime import timedelta
+
 from pathlib import Path
 from dotenv import load_dotenv
 import os
@@ -177,8 +177,8 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 # CELERY_BEAT_SCHEDULE = {
 #     'task-name': {
-#         'task': 'habits.tasks.send_message_to_bot()',  # Путь к задаче
-#         'schedule': timedelta(minutes=1),  # Расписание выполнения задачи (например, каждые 10 минут)
+#         'task': 'habits.tasks.send_message_to_bot()',
+#         'schedule': timedelta(minutes=1),
 #     },
 # }
 

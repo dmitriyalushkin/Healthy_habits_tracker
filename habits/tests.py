@@ -22,9 +22,13 @@ class HabitTestCase(APITestCase):
         """ тестирование создания привычки """
 
         # отправляем запрос на аутентификацию пользователя
-        response = self.client.post('/users/token/', {"email": "admin@sky.pro", "password": "12345"})
+        response = self.client.post('/users/token/', {
+            "email": "admin@sky.pro", "password": "12345"
+        })
         self.access_token = response.json().get("access")
-        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
+        self.client.credentials(
+            HTTP_AUTHORIZATION=f'Bearer {self.access_token}'
+        )
 
         # задаем данные для создания привычки
         data_habit = {
@@ -53,8 +57,9 @@ class HabitTestCase(APITestCase):
         self.assertEquals(
             response.json(),
             {'id': 2, 'user': 2, 'name': 'Test', 'place': None, 'time': None,
-             'action': 'Test', 'habit_is_good': True, 'period': 'ежедневно', 'duration': '00:02:00',
-             'habit_is_public': False, 'connected_habit': None, 'prize': None}
+             'action': 'Test', 'habit_is_good': True, 'period': 'ежедневно',
+             'duration': '00:02:00', 'habit_is_public': False,
+             'connected_habit': None, 'prize': None}
         )
 
         # проверяем на существование объектов привычек
@@ -68,9 +73,13 @@ class HabitTestCase(APITestCase):
         self.maxDiff = None
 
         # отправляем запрос на аутентификацию пользователя
-        response = self.client.post('/users/token/', {"email": "admin@sky.pro", "password": "12345"})
+        response = self.client.post('/users/token/', {
+            "email": "admin@sky.pro", "password": "12345"
+        })
         self.access_token = response.json().get("access")
-        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
+        self.client.credentials(
+            HTTP_AUTHORIZATION=f'Bearer {self.access_token}'
+        )
 
         # создаем тестовую привычку
         Habit.objects.create(
@@ -112,9 +121,13 @@ class HabitTestCase(APITestCase):
         """ тестирование информации о привычке """
 
         # отправляем запрос на аутентификацию пользователя
-        response = self.client.post('/users/token/', {"email": "admin@sky.pro", "password": "12345"})
+        response = self.client.post('/users/token/', {
+            "email": "admin@sky.pro", "password": "12345"
+        })
         self.access_token = response.json().get("access")
-        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
+        self.client.credentials(
+            HTTP_AUTHORIZATION=f'Bearer {self.access_token}'
+        )
 
         # создаем тестовую привычку
         habit = Habit.objects.create(
@@ -142,17 +155,22 @@ class HabitTestCase(APITestCase):
         self.assertEquals(
             response.json(),
             {'id': 4, 'user': 4, 'name': 'Test', 'place': None, 'time': None,
-             'action': 'Test', 'habit_is_good': True, 'period': 'ежедневно', 'duration': '00:02:00',
-             'habit_is_public': True, 'connected_habit': None, 'prize': None}
+             'action': 'Test', 'habit_is_good': True, 'period': 'ежедневно',
+             'duration': '00:02:00', 'habit_is_public': True,
+             'connected_habit': None, 'prize': None}
         )
 
     def test_change_habit(self):
         """ тестирование изменения привычки """
 
         # отправляем запрос на аутентификацию пользователя
-        response = self.client.post('/users/token/', {"email": "admin@sky.pro", "password": "12345"})
+        response = self.client.post('/users/token/', {
+            "email": "admin@sky.pro", "password": "12345"
+        })
         self.access_token = response.json().get("access")
-        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
+        self.client.credentials(
+            HTTP_AUTHORIZATION=f'Bearer {self.access_token}'
+        )
 
         # создаем тестовую привычку
         habit = Habit.objects.create(
@@ -186,17 +204,22 @@ class HabitTestCase(APITestCase):
         self.assertEquals(
             response.json(),
             {'id': 1, 'user': 1, 'name': 'Test_1', 'place': None, 'time': None,
-             'action': 'Test', 'habit_is_good': True, 'period': 'ежедневно', 'duration': '00:02:00',
-             'habit_is_public': True, 'connected_habit': None, 'prize': None}
+             'action': 'Test', 'habit_is_good': True, 'period': 'ежедневно',
+             'duration': '00:02:00', 'habit_is_public': True,
+             'connected_habit': None, 'prize': None}
         )
 
     def test_delete_habit(self):
         """ тестирование удаления привычки """
 
         # отправляем запрос на аутентификацию пользователя
-        response = self.client.post('/users/token/', {"email": "admin@sky.pro", "password": "12345"})
+        response = self.client.post('/users/token/', {
+            "email": "admin@sky.pro", "password": "12345"
+        })
         self.access_token = response.json().get("access")
-        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
+        self.client.credentials(
+            HTTP_AUTHORIZATION=f'Bearer {self.access_token}'
+        )
 
         # создаем тестовую привычку
         habit = Habit.objects.create(

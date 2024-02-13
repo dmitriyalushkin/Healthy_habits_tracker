@@ -10,11 +10,14 @@ class User(AbstractUser):
 
     email = models.EmailField(unique=True, verbose_name='почта')
     phone = models.CharField(max_length=35, verbose_name='телефон', **NULLABLE)
-    avatar = models.ImageField(upload_to='user/', verbose_name='фото', **NULLABLE)
+    avatar = models.ImageField(upload_to='user/', verbose_name='фото',
+                               **NULLABLE)
     city = models.CharField(max_length=100, verbose_name='город', **NULLABLE)
-    is_active = models.BooleanField(choices=VERSION_CHOICES, default=True, verbose_name='Статус пользователя')
+    is_active = models.BooleanField(choices=VERSION_CHOICES, default=True,
+                                    verbose_name='Статус пользователя')
 
-    telegram_id = models.CharField(max_length=20, verbose_name='telegram_id', **NULLABLE)
+    telegram_id = models.CharField(max_length=20, verbose_name='telegram_id',
+                                   **NULLABLE)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []

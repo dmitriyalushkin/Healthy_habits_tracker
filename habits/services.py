@@ -20,7 +20,8 @@ def check_habits_daily():
     date_now = date_time_now.astimezone(moscow_timezone)
     time_now = date_now.time()
 
-    habits = Habit.objects.filter(time__hour=time_now.hour, time__minute=time_now.minute,
+    habits = Habit.objects.filter(time__hour=time_now.hour,
+                                  time__minute=time_now.minute,
                                   period='ежедневно', habit_is_good=False)
 
     for habit in habits:
@@ -35,7 +36,8 @@ def check_habits_weekly():
     date_now = date_time_now.astimezone(moscow_timezone)
     time_now = date_now.time()
 
-    habits = Habit.objects.filter(time__hour=time_now.hour, time__minute=time_now.minute,
+    habits = Habit.objects.filter(time__hour=time_now.hour,
+                                  time__minute=time_now.minute,
                                   period='еженедельно', habit_is_good=False)
 
     for habit in habits:
@@ -53,7 +55,8 @@ def create_message(habit_id):
     place = habit.place
     duration = round(habit.duration.total_seconds() / 60)
 
-    message = f'Привет {user}! Время {time}. Пора идти в {place} и сделать {action}. ' \
+    message = f'Привет {user}! Время {time}. ' \
+              f'Пора идти в {place} и сделать {action}. ' \
               f'Это займет {duration} минут!'
 
     response = send_message_to_bot(telegram_id, message)
@@ -61,7 +64,8 @@ def create_message(habit_id):
         habit_is_good_id = habit.connected_habit.id
         habit_is_good = Habit.objects.get(id=habit_is_good_id)
         nice_time = round(habit_is_good.duration.total_seconds() / 60)
-        message = (f'Молодец! Ты выполнил {action}, за это тебе подарок {habit_is_good.action} '
+        message = (f'Молодец! Ты выполнил {action}, '
+                   f'за это тебе подарок {habit_is_good.action} '
                    f'в течение {nice_time} минут')
 
         time.sleep(10)
