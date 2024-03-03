@@ -94,8 +94,7 @@ DATABASES = {
         'NAME': 'habits',
         'USER': 'postgres',
         'PASSWORD': 12345,
-        'HOST': '127.0.0.1',
-        'PORT': 5432,
+        'HOST': 'db',
     }
 }
 
@@ -164,9 +163,9 @@ CSRF_TRUSTED_ORIGINS = [
     "https://read-and-write.example.com",
 ]
 
-CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://redis:6379'
 
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379'
 
 CELERY_TIMEZONE = "Europe/Moscow"
 
