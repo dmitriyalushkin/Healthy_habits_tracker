@@ -3,10 +3,12 @@ version: '3'
 services:
   db:
     image: postgres
+    env_file:
+      - .env
     environment:
-      - POSTGRES_DB=habits
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=$(POSTGRES_DB)
+      - POSTGRES_USER=$(POSTGRES_USER)
+      - POSTGRES_PASSWORD=$(POSTGRES_PASSWORD)
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - pgdata:/var/lib/postgresql/data/pgdata
